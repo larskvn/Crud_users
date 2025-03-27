@@ -10,7 +10,6 @@
 <style>
     body {
         padding-top: 56px;
-        /* Compensar el navbar fijo */
         background-color: #f8f9fa;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
@@ -133,6 +132,14 @@
                 </div>
                 <div class="modal-body">
                     <form method="POST">
+
+                        <?php
+                        // esto es para que se pueda conectar a la base de datos y se pueda enviar los datos de la persona 
+                        include("model/conexion.php");
+                        // esto es para que se pueda registrar a la persona 
+                        include("controller/register_person.php");
+                        ?>
+
                         <div class="mb-3">
                             <label class="col-form-label">Nombre</label>
                             <input type="text" class="form-control" name="nombre" placeholder="Ingrese su nombre">
@@ -154,12 +161,14 @@
                             <input type="email" class="form-control" name="correo" placeholder="Ingrese su correo electrónico">
                         </div>
 
+
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" name="btnregister">Send User</button>
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" name="btnregister">Send User</button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -210,7 +219,7 @@
                                 <td><?= $datos->correo ?></td>
                                 <td class="text-center">
                                     <button class="btn btn-sm btn-warning action-btn">
-                                          Editar
+                                        Editar
                                     </button>
                                     <button class="btn btn-sm btn-danger action-btn">
                                         <i class="bi bi-trash"></i> Eliminar

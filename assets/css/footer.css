@@ -1,0 +1,78 @@
+.footer {
+    background-color: #252B42;
+    padding: 4rem 8rem;
+}
+
+.footer-title {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+p, .container_parrafo, .contact-text li a {
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contact-text {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-text li {
+    margin-bottom: 0.8rem;
+}
+
+.contact-text li a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-text li a:hover {
+    color: #23A6F0;
+}
+
+.contact-icons {
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.contact-icons i {
+    color: #23A6F0;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.contact-icons i:hover {
+    transform: scale(1.1);
+}
+
+.container-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.container-copy {
+    background-color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.container-copy p {
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}

@@ -1,3 +1,7 @@
+<?php
+include "../includes/navbar.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,76 +45,19 @@
             margin-bottom: 20px;
         }
     }
+
+
+    .bg-custom {
+        background-color: #184C99 !important;
+    }
 </style>
 
 <body>
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top">
-        <div class="container">
-
-            <a class="navbar-brand fw-bold" href="#">
-                <i class="bi bi-people-fill me-2"></i>RegistroPersonas
-            </a>
-
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <i class="bi bi-house-door me-1"></i> Inicio
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="bi bi-info-circle me-1"></i> Acerca de
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="bi bi-gear me-1"></i> Administración
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-person-plus me-2"></i>Registros</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-card-list me-2"></i>Reportes</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-graph-up me-2"></i>Estadísticas</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <div class="d-flex align-items-center">
-                    <div class="dropdown">
-                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                            id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span>Usuario</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end shadow">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Perfil</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Configuración</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
 
 
 
-    <!-- Botón moderno con icono SVG y estilo mejorado -->
     <div class="container py-4">
         <button type="button" class="btn btn-primary d-flex justify-content-center px-4 py-2 mt-2 " data-bs-toggle="modal" data-bs-target="#exampleModal">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle me-2" viewBox="0 0 16 16">
@@ -135,9 +82,9 @@
 
                         <?php
                         // esto es para que se pueda conectar a la base de datos y se pueda enviar los datos de la persona 
-                        include("model/conexion.php");
+                        include("../model/conexion.php");
                         // esto es para que se pueda registrar a la persona 
-                        include("controller/register_person.php");
+                        include("../controller/register_person.php");
                         ?>
 
                         <div class="mb-3">
@@ -175,7 +122,6 @@
 
 
 
-    <!-- Tabla de Registros -->
     <div class="container py-4 main-container">
         <div class="table-container">
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -207,7 +153,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        include("model/conexion.php");
+                        include("../model/conexion.php");
                         $sql = $conexcion->query("SELECT * FROM persona");
                         while ($datos = $sql->fetch_object()) { ?>
                             <tr>
@@ -218,12 +164,8 @@
                                 <td><?= date('d/m/Y', strtotime($datos->fecha_nac)) ?></td>
                                 <td><?= $datos->correo ?></td>
                                 <td class="text-center">
-                                    <button class="btn btn-sm btn-warning action-btn">
-                                        Editar
-                                    </button>
-                                    <button class="btn btn-sm btn-danger action-btn">
-                                        <i class="bi bi-trash"></i> Eliminar
-                                    </button>
+                                    <a href="modificar_user.php" class="btn btn-sm btn-warning action-btn">Editar</a>
+                                    <a href="../controller/modificar_user.php" class="btn btn-sm btn-danger action-btn">Eliminar</a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -235,6 +177,8 @@
     </div>
     </div>
 
+
+    <?php include "../includes/footer.php"; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 

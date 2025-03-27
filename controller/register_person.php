@@ -8,10 +8,13 @@ if (isset($_POST['btnregister'])) {
         $fecha = $_POST['fecha'];
         $correo = $_POST['correo'];
 
-        $sql = $conexcion->prepare("INSERT INTO persona (nombre, apellido, dni, fecha_nac, correo) VALUES (?, ?, ?, ?, ?)");
-        $sql->bind_param("sssss", $nombre, $apellido, $dni, $fecha, $correo);
+        $sql = $conexcion->query("INSERT INTO persona (nombre, apellido, dni, fecha_nac, correo) VALUES ('$nombre', '$apellido', '$dni', '$fecha', '$correo')");
+        
 
-        if ($sql->execute()) {
+        //$sql = $conexcion->prepare("INSERT INTO persona (nombre, apellido, dni, fecha_nac, correo) VALUES (?, ?, ?, ?, ?)");
+        //$sql->bind_param("sssss", $nombre, $apellido, $dni, $fecha, $correo);
+
+        if ($sql==1) {
             echo '<div class="alert alert-success"> Persona registrado correctamente</div>';
     
         } else {

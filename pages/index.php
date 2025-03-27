@@ -9,6 +9,9 @@ include "../includes/navbar.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <title>Crud php y mysql</title>
 </head>
 <style>
@@ -50,15 +53,74 @@ include "../includes/navbar.php";
     .bg-custom {
         background-color: #184C99 !important;
     }
+
+    .tg-main {
+        height: 70vh;
+        background: #184C99;
+        position: relative;
+        z-index: 1;
+    }
+
+    .tg-text-title {
+        color: #23A6F0;
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    .animated-border {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .animated-border::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        border: 2px solid white;
+        transition: left 0.3s ease-in-out;
+    }
+
+    .animated-border:hover::before {
+        left: 0;
+    }
 </style>
 
 <body>
 
+    <main class="tg-main d-flex p-2 ">
+        <div class="row align-items-center justify-content-between px-5">
+            <div class="col-md-6 ps-5">
+                <h4 class="tg-text-title pb-3">Online training</h4>
+                <h1 class="text-light">25K+ STUDENTS TRUST US</h1>
+                <p class="text-light">
+                    We know how large objects will act, but things on a small scale
+                </p>
+                <div class="d-flex gap-3 ">
+                    <a class="btn btn-custom bg-custom text-light animated-border animate__animated animate__bounce" href="#">Get Quote Now</a>
+                    <a class="btn btn-outline-light animated-border animate__animated animate__bounce" href="#">Learn More</a>
+
+
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="../assets/image/hero.svg" class="img-fluid" width="80%" alt="Profile Image">
+            </div>
+        </div>
+    </main>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#184C99" fill-opacity="1" d="M0,224L26.7,192C53.3,160,107,96,160,96C213.3,96,267,160,320,192C373.3,224,427,224,480,192C533.3,160,587,96,640,96C693.3,96,747,160,800,165.3C853.3,171,907,117,960,133.3C1013.3,149,1067,235,1120,261.3C1173.3,288,1227,256,1280,229.3C1333.3,203,1387,181,1413,170.7L1440,160L1440,0L1413.3,0C1386.7,0,1333,0,1280,0C1226.7,0,1173,0,1120,0C1066.7,0,1013,0,960,0C906.7,0,853,0,800,0C746.7,0,693,0,640,0C586.7,0,533,0,480,0C426.7,0,373,0,320,0C266.7,0,213,0,160,0C106.7,0,53,0,27,0L0,0Z"></path>
+    </svg>
 
 
 
 
-    <div class="container py-4">
+
+    <!-- <div class="container py-4">
         <button type="button" class="btn btn-primary d-flex justify-content-center px-4 py-2 mt-2 " data-bs-toggle="modal" data-bs-target="#exampleModal">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle me-2" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -175,7 +237,7 @@ include "../includes/navbar.php";
         </div>
     </div>
     </div>
-    </div>
+    </div> -->
 
 
     <?php include "../includes/footer.php"; ?>

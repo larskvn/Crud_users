@@ -1,24 +1,18 @@
 .footer {
-    background-color: #252B42;
-    padding: 4rem 8rem;
+    background-color: #252B42; /* Color original */
 }
 
 .footer-title {
-    color: #fff;
     font-size: 1.5rem;
-    margin-bottom: 1rem;
     font-weight: 600;
+    margin-bottom: 1rem;
+    color: white;
 }
 
-p, .container_parrafo, .contact-text li a {
-    color: #fff;
+p, .small, .text-light, .contact-text li a {
+    color: white !important;
     font-size: 1rem;
     font-family: 'Montserrat', sans-serif;
-}
-
-.contact-text {
-    list-style: none;
-    padding: 0;
 }
 
 .contact-text li {
@@ -31,36 +25,15 @@ p, .container_parrafo, .contact-text li a {
 }
 
 .contact-text li a:hover {
-    color: #23A6F0;
+    color: #23A6F0 !important;
 }
 
-.contact-icons {
-    display: flex;
-    gap: 1rem;
-    padding: 0;
-    list-style: none;
-}
-
-.contact-icons i {
-    color: #23A6F0;
-    font-size: 1.5rem;
+.contact-icons a {
     transition: transform 0.3s ease;
 }
 
-.contact-icons i:hover {
+.contact-icons a:hover {
     transform: scale(1.1);
-}
-
-.container-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: space-between;
-}
-
-.footer-section {
-    flex: 1;
-    min-width: 200px;
 }
 
 .container-copy {
@@ -70,7 +43,7 @@ p, .container_parrafo, .contact-text li a {
 }
 
 .container-copy p {
-    color: #000;
+    color: #252B42;
     font-size: 0.9rem;
     font-weight: 500;
     font-family: 'Montserrat', sans-serif;

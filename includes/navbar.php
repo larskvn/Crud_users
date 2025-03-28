@@ -73,7 +73,7 @@
             <!-- LOGIN / JOIN US -->
             <div class="d-flex">
                 <a class="btn  text-light me-3" href="#">Login</a>
-                <a class="btn text-light  btn-custom" href="#">JOIN US →</a>
+                <a class="btn text-light  btn-custom" href="#">REGISTRARSE</a>
             </div>
         </div>
     </nav>

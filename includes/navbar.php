@@ -46,7 +46,7 @@
     <nav class="navbar navbar-expand-lg bg-custom navbar-dark shadow-sm fixed-top">
         <div class="container">
 
-            <a class="navbar-brand fw-bold text-light" href="#">Get In Touch</a>
+            <a class="navbar-brand fw-bold text-light" href="../index.php">Get In Touch</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,7 +73,7 @@
             <!-- LOGIN / JOIN US -->
             <div class="d-flex">
                 <a class="btn  text-light me-3" href="#">Login</a>
-                <a class="btn text-light  btn-custom" href="#">REGISTRARSE</a>
+                <a class="btn text-light  btn-custom" href="./pages/register.php">REGISTRARSE</a>
             </div>
         </div>
     </nav>

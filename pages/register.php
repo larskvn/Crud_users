@@ -5,60 +5,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../assets/css/main.css">
     <title>Registro</title>
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .bg-image {
+        background: url('../assets/image/bg-register.svg') center/cover no-repeat;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Efecto cristal más transparente */
+    .glass-effect {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(212, 188, 188, 0);
+        /* Más transparente */
+        backdrop-filter: blur(1px) brightness(1.05);
+        /* Menos blur y poco brillo */
+        -webkit-backdrop-filter: blur(8px) brightness(1.05);
+        pointer-events: none;
+        z-index: 1;
+        box-shadow:
+            inset 0 0 15px rgba(255, 255, 255, 0.1);
+        /* Sombra más suave */
+    }
+
+    /* Efecto de reflejo mejorado */
+    .glass-effect::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0) 40%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0) 60%,
+                rgba(255, 255, 255, 0) 100%);
+        transform: rotate(25deg);
+        animation: lightReflection 8s infinite ease-in-out;
+        z-index: 2;
+        opacity: 0.7;
+    }
+
+    /* Borde sutil para efecto de vidrio */
+    .glass-effect::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        pointer-events: none;
+        z-index: 3;
+    }
+
+    /* Keyframes mejorados para la animación */
+    @keyframes lightReflection {
+        0% {
+            transform: translate(-30%, -30%) rotate(25deg);
+        }
+
+        50% {
+            transform: translate(30%, 30%) rotate(25deg);
+        }
+
+        100% {
+            transform: translate(-30%, -30%) rotate(25deg);
+        }
+    }
+
+
+   
+</style>
 
 <body>
-    <?php
-    include "../includes/navbar.php";
-    ?>
+    <div class="container-fluid">
+        <div class="row vh-100">
+            <!-- Columna izquierda (Imagen que ocupa todo su lado) -->
+            <div class="col-md p-0 position-relative bg-image">
+                <!-- Capa de efecto cristal -->
+                <div class="glass-effect"></div>
+            </div>
+            <!-- Columna derecha (Formulario) -->
+            <div class="col-md-6  text-secudary p-5 d-flex">
+
+                <div class="col-md-8 mx-auto bg-white p-3 rounded shadow-sm" style="background-color: rgba(255, 255, 255, 0.8);">
+                    <h2 class="text-center">Registro de Usuario</h2>
+                    <p class="text-center">Por favor complete el siguiente formulario para registrarse.</p>
+                    <hr>
+                    <form method="POST">
+                        <?php
+                        include("../model/conexion.php");
+                        include("../controller/register_person.php");
+                        ?>
+
+                        <div class="mb-3">
+                            <label class="col-form-label">Nombre</label>
+                            <input type="text" class="form-control" name="nombre" placeholder="Ingrese su nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Apellido</label>
+                            <input type="text" class="form-control" name="apellido" placeholder="Ingrese su apellido">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">DNI</label>
+                            <input type="text" class="form-control" name="dni" placeholder="Ingrese su DNI">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" name="correo" placeholder="Ingrese su correo electrónico">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPassword5" class="form-label">Password</label>
+                            <input type="password" id="inputPassword5" name="contrasena" class="form-control" aria-describedby="passwordHelpBlock">
+                            <div id="passwordHelpBlock" class="form-text">
+                                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                            </div>
+                        </div>
 
 
 
-    <div class="container mt-5">
-        <div class="card p-4 ">
-            <form method="POST">
+                        <div class="modal-footer d-flex justify-content-center">
 
-                <?php
-                // esto es para que se pueda conectar a la base de datos y se pueda enviar los datos de la persona 
-                include("../model/conexion.php");
-                // esto es para que se pueda registrar a la persona 
-                include("../controller/register_person.php");
-                ?>
+                            <button type="submit" class="btn btn-primary" name="btnregister">Send User</button>
+                        </div>
 
-                <div class="mb-3">
-                    <label class="col-form-label">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Ingrese su nombre">
+                    </form>
+                    <hr>
+                    <p class="text-center">¿Ya tienes una cuenta? <a href="login.php">Iniciar sesión</a></p>
+                    <p class="text-center">¿Olvidaste tu contraseña? <a href="recuperar.php">Recuperar contraseña</a></p>
                 </div>
-                <div class="mb-3">
-                    <label class="col-form-label">Apellido</label>
-                    <input type="text" class="form-control" name="apellido" placeholder="Ingrese su apellido">
-                </div>
-                <div class="mb-3">
-                    <label class="col-form-label">DNI</label>
-                    <input type="text" class="form-control" name="dni" placeholder="Ingrese su DNI">
-                </div>
-                <div class="mb-3">
-                    <label class="col-form-label">Fecha de Nacimiento</label>
-                    <input type="date" class="form-control" name="fecha" placeholder="Ingrese su fecha de nacimiento">
-                </div>
-                <div class="mb-3">
-                    <label class="col-form-label">Correo Electrónico</label>
-                    <input type="email" class="form-control" name="correo" placeholder="Ingrese su correo electrónico">
-                </div>
-
-
-                <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" name="btnregister">Send User</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 </body>
+
+
 
 </html>

@@ -1,119 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
 
-     <!--<div class="container py-4">
-        <button type="button" class="btn btn-primary d-flex justify-content-center px-4 py-2 mt-2 " data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle me-2" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-            </svg>
-            Agregar Nuevo
-        </button>
-    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
+    <title>Registro</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
+    .bg-image {
+        background: url('../assets/image/bg-register.svg') center/cover no-repeat;
+        position: relative;
+        overflow: hidden;
+    }
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de Personas</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    /* Efecto cristal más transparente */
+    .glass-effect {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(212, 188, 188, 0);
+        /* Más transparente */
+        backdrop-filter: blur(1px) brightness(1.05);
+        /* Menos blur y poco brillo */
+        -webkit-backdrop-filter: blur(8px) brightness(1.05);
+        pointer-events: none;
+        z-index: 1;
+        box-shadow:
+            inset 0 0 15px rgba(255, 255, 255, 0.1);
+        /* Sombra más suave */
+    }
+
+    /* Efecto de reflejo mejorado */
+    .glass-effect::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0) 40%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0) 60%,
+                rgba(255, 255, 255, 0) 100%);
+        transform: rotate(25deg);
+        animation: lightReflection 8s infinite ease-in-out;
+        z-index: 2;
+        opacity: 0.7;
+    }
+
+    /* Borde sutil para efecto de vidrio */
+    .glass-effect::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        pointer-events: none;
+        z-index: 3;
+    }
+
+    /* Keyframes mejorados para la animación */
+    @keyframes lightReflection {
+        0% {
+            transform: translate(-30%, -30%) rotate(25deg);
+        }
+
+        50% {
+            transform: translate(30%, 30%) rotate(25deg);
+        }
+
+        100% {
+            transform: translate(-30%, -30%) rotate(25deg);
+        }
+    }
+
+    .icon-color {
+        color: #534A45
+    }
+    .icon-color:hover {
+        color: #23A6F0;
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="row vh-100">
+            <!-- Columna izquierda (Imagen que ocupa todo su lado) -->
+            <div class="col-md p-0 position-relative bg-image">
+                <!-- Capa de efecto cristal -->
+                <div class="position-absolute top-50 start-50 translate-middle text-center text-white" style="z-index: 2;">
+                    <a href="../index.php" class="d-flex justify-content-center align-items-center text-decoration-none ">
+                        <img src="../assets/image/logo.svg" alt="logo de la empresa">
+                        <h1 class="d-flex m-3 text-white">AIFT</h1>
+                    </a>
+                    <h3 class="text-light fw-lighter">Artificial Intelligence for Two</h3>
                 </div>
-                <div class="modal-body">
-                    <form method="POST">
+                <div class="position-absolute bottom-0 start-50 translate-middle-x text-center text-white" style="z-index: 2;">
+                    <ul class="list-unstyled d-flex justify-content-center justify-content-md-start gap-3">
+                        <li>
+                            <a href="#" class="fs-4 d-inline-flex justify-content-center align-items-center bg-white text-dark border border-5 rounded-3"
+                                style="width: 40px; height: 40px;  border-width: 5px;">
+                                <i class="bi bi-facebook icon-color"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="fs-4 d-inline-flex justify-content-center align-items-center bg-white text-dark border border-5 rounded-3"
+                                style="width: 40px; height: 40px;  border-width: 5px;">
+                                <i class="bi bi-instagram icon-color"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="fs-4 d-inline-flex justify-content-center align-items-center bg-white text-dark border border-5 rounded-3"
+                                style="width: 40px; height: 40px;  border-width: 5px;">
+                                <i class="bi bi-twitter icon-color"></i>
+                            </a>
+                        </li>
+                    </ul>
 
-                    <?php
-                        // esto es para que se pueda conectar a la base de datos y se pueda enviar los datos de la persona 
+                </div>
+                <div class="glass-effect"></div>
+
+
+            </div>
+            <!-- Columna derecha (Formulario) -->
+            <div class="col-md-6  text-secudary p-5 d-flex justify-content-center align-items-center">
+
+                <div class="col-md-8 mx-auto bg-white p-3 rounded shadow-sm" style="background-color: rgba(255, 255, 255, 0.8);">
+                    <h2 class="text-center">Iniciar sesión</h2>
+                    <p class="text-center">Complete los campos para iniciar sesión</p>
+                    <hr>
+                    <form method="POST">
+                        <?php
                         include("../model/conexion.php");
-                        // esto es para que se pueda registrar a la persona 
                         include("../controller/register_person.php");
                         ?>
-
-                        <div class="mb-3">
-                            <label class="col-form-label">Nombre</label>
-                            <input type="text" class="form-control" name="nombre" placeholder="Ingrese su nombre">
-                        </div>
-                        <div class="mb-3">
-                            <label class="col-form-label">Apellido</label>
-                            <input type="text" class="form-control" name="apellido" placeholder="Ingrese su apellido">
-                        </div>
-                        <div class="mb-3">
-                            <label class="col-form-label">DNI</label>
-                            <input type="text" class="form-control" name="dni" placeholder="Ingrese su DNI">
-                        </div>
-                        <div class="mb-3">
-                            <label class="col-form-label">Fecha de Nacimiento</label>
-                            <input type="date" class="form-control" name="fecha" placeholder="Ingrese su fecha de nacimiento">
-                        </div>
                         <div class="mb-3">
                             <label class="col-form-label">Correo Electrónico</label>
                             <input type="email" class="form-control" name="correo" placeholder="Ingrese su correo electrónico">
                         </div>
-
-
-                        <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" name="btnregister">Send User</button>
+                        <div class="mb-3">
+                            <label for="inputPassword5" class="form-label">Password</label>
+                            <input type="password" id="inputPassword5" name="contrasena" class="form-control" aria-describedby="passwordHelpBlock">
+                            <div id="passwordHelpBlock" class="form-text">
+                                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                            </div>
                         </div>
+                        <div class="modal-footer d-flex justify-content-center">
+
+                            <button type="submit" class="btn btn-primary" name="btnregister">Iniciar sesión</button>
+                        </div>
+
                     </form>
+                    <hr>
+                    <p class="text-center ">¿No tienes una cuenta?<a href="../pages/register.php"> Registrarse</a></p>
+                    <p class="text-center">¿Olvidaste tu contraseña? <a href="recuperar.php">Recuperar contraseña</a></p>
                 </div>
-
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
 
 
-    <div class="container py-4 main-container">
-        <div class="table-container">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="m-0">
-                    <i class="bi bi-people-fill text-primary me-2"></i>Lista de Personas
-                </h4>
-                <div>
-                    <button class="btn btn-sm btn-outline-primary">
-                        <i class="bi bi-printer"></i> Imprimir
-                    </button>
-                    <button class="btn btn-sm btn-outline-success">
-                        <i class="bi bi-file-excel"></i> Exportar
-                    </button>
-                </div>
-            </div>
 
-            <div class="table-responsive">
-                <table class="table table-striped table-hover align-middle">
-                    <thead class="table-primary">
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Apellido</th>
-                            <th scope="col">DNI</th>
-                            <th scope="col">Fecha Nac.</th>
-                            <th scope="col">Correo</th>
-                            <th scope="col" class="text-center">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        include("../model/conexion.php");
-                        $sql = $conexcion->query("SELECT * FROM persona");
-                        while ($datos = $sql->fetch_object()) { ?>
-                            <tr>
-                                <td><?= $datos->id_persona ?></td>
-                                <td><?= $datos->nombre ?></td>
-                                <td><?= $datos->apellido ?></td>
-                                <td><?= $datos->dni ?></td>
-                                <td><?= date('d/m/Y', strtotime($datos->fecha_nac)) ?></td>
-                                <td><?= $datos->correo ?></td>
-                                <td class="text-center">
-                                    <a href="modificar_user.php" class="btn btn-sm btn-warning action-btn">Editar</a>
-                                    <a href="../controller/modificar_user.php" class="btn btn-sm btn-danger action-btn">Eliminar</a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div> -->
+</html>

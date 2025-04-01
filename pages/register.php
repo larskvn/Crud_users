@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
     <title>Registro</title>
 </head>
 <style>
@@ -87,8 +89,12 @@
         }
     }
 
-
-   
+    .icon-color {
+        color: #534A45
+    }
+    .icon-color:hover {
+        color: #23A6F0;
+    }
 </style>
 
 <body>
@@ -98,6 +104,37 @@
             <div class="col-md p-0 position-relative bg-image">
                 <!-- Capa de efecto cristal -->
                 <div class="glass-effect"></div>
+                <div class="position-absolute top-50 start-50 translate-middle text-center text-white" style="z-index: 2;">
+                    <a href="../index.php" class="d-flex justify-content-center align-items-center text-decoration-none ">
+                        <img src="../assets/image/logo.svg" alt="logo de la empresa">
+                        <h1 class="d-flex m-3 text-white">AIFT</h1>
+                    </a>
+                    <h3 class="text-light fw-lighter">Artificial Intelligence for Two</h3>
+                </div>
+                <div class="position-absolute bottom-0 start-50 translate-middle-x text-center text-white" style="z-index: 2;">
+                    <ul class="list-unstyled d-flex justify-content-center justify-content-md-start gap-3">
+                        <li>
+                            <a href="#" class="fs-4 d-inline-flex justify-content-center align-items-center bg-white text-dark border border-5 rounded-3"
+                                style="width: 40px; height: 40px;  border-width: 5px;">
+                                <i class="bi bi-facebook icon-color"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="fs-4 d-inline-flex justify-content-center align-items-center bg-white text-dark border border-5 rounded-3"
+                                style="width: 40px; height: 40px;  border-width: 5px;">
+                                <i class="bi bi-instagram icon-color"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="fs-4 d-inline-flex justify-content-center align-items-center bg-white text-dark border border-5 rounded-3"
+                                style="width: 40px; height: 40px;  border-width: 5px;">
+                                <i class="bi bi-twitter icon-color"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
             </div>
             <!-- Columna derecha (Formulario) -->
             <div class="col-md-6  text-secudary p-5 d-flex">
@@ -121,10 +158,6 @@
                             <input type="text" class="form-control" name="apellido" placeholder="Ingrese su apellido">
                         </div>
                         <div class="mb-3">
-                            <label class="col-form-label">DNI</label>
-                            <input type="text" class="form-control" name="dni" placeholder="Ingrese su DNI">
-                        </div>
-                        <div class="mb-3">
                             <label class="col-form-label">Correo Electrónico</label>
                             <input type="email" class="form-control" name="correo" placeholder="Ingrese su correo electrónico">
                         </div>
@@ -135,12 +168,9 @@
                                 Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                             </div>
                         </div>
-
-
-
                         <div class="modal-footer d-flex justify-content-center">
 
-                            <button type="submit" class="btn btn-primary" name="btnregister">Send User</button>
+                            <button type="submit" class="btn btn-primary" name="btnregister">Registrarme</button>
                         </div>
 
                     </form>

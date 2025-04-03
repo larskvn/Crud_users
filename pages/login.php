@@ -147,7 +147,6 @@
                     <form method="POST">
                         <?php
                         include("../model/conexion.php");
-                        include("../controller/register_person.php");
                         ?>
                         <div class="mb-3">
                             <label class="col-form-label">Correo Electrónico</label>

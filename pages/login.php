@@ -92,6 +92,7 @@
     .icon-color {
         color: #534A45
     }
+
     .icon-color:hover {
         color: #23A6F0;
     }
@@ -166,14 +167,45 @@
 
                     </form>
                     <hr>
-                    <p class="text-center ">¿No tienes una cuenta?<a href="../pages/register.php"> Registrarse</a></p>
-                    <p class="text-center">¿Olvidaste tu contraseña? <a href="recuperar.php">Recuperar contraseña</a></p>
+                    <p class="text-center ">¿No tienes una cuenta?<a href="../pages/register.php" style="cursor: pointer; text-decoration: none; transition: 0.3s; font-weight: bold;"
+          onmouseover="this.style.textDecoration='underline'; this.style.color='#0056b3';"
+          onmouseout="this.style.textDecoration='none'; this.style.color='';"> Registrarse</a></p>
+                    <!-- Enlace para abrir el modal -->
+                    <p class="text-center">
+                        ¿Olvidaste tu contraseña?
+                        <span class="text-primary" data-bs-toggle="modal" data-bs-target="#recuperarModal" style="cursor: pointer; text-decoration: none; transition: 0.3s; font-weight: bold;"
+          onmouseover="this.style.textDecoration='underline'; this.style.color='#0056b3';"
+          onmouseout="this.style.textDecoration='none'; this.style.color='';">Recuperar contraseña</span>
+                    </p>
+
+                    <!-- Modal de Bootstrap -->
+                    <div class="modal fade" id="recuperarModal" tabindex="-1" aria-labelledby="recuperarModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="recuperarModalLabel">Recuperar Contraseña</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Introduce tu correo electrónico para recuperar tu contraseña.</p>
+                                    <input type="email" class="form-control" placeholder="Correo electrónico">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-primary">Enviar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bootstrap JS (necesario para que funcione el modal) -->
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 

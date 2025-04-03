@@ -176,7 +176,6 @@
                     </form>
                     <hr>
                     <p class="text-center">¿Ya tienes una cuenta? <a href="login.php">Iniciar sesión</a></p>
-                    <p class="text-center">¿Olvidaste tu contraseña? <a href="recuperar.php">Recuperar contraseña</a></p>
                 </div>
             </div>
         </div>

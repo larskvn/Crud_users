@@ -46,7 +46,9 @@
     <nav class="navbar navbar-expand-lg bg-custom navbar-dark shadow-sm fixed-top">
         <div class="container">
 
-            <a class="navbar-brand fw-bold text-light" href="../index.php">Get In Touch</a>
+W             <a class="navbar-brand fw-bold text-light" href="../index.php">
+                <span style="color: #22C55E">Viaje</span>Seguro
+            </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,24 +58,30 @@
             <div class="collapse navbar-collapse ms-5 " id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Home</a>
+                        <a class="nav-link text-light" href="#">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Product</a>
+                        <a class="nav-link text-light" href="#">Rutas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Pricing</a>
+                        <a class="nav-link text-light" href="#">Horarios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Contact</a>
+                        <a class="nav-link text-light" href="#">Tarifas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Contacto</a>
                     </li>
                 </ul>
             </div>
 
             <!-- LOGIN / JOIN US -->
             <div class="d-flex">
-                <a class="btn  text-light me-3" href="./pages/login.php">Login</a>
-                <a class="btn text-light  btn-custom" href="./pages/register.php">REGISTRARSE</a>
+                <a class="btn text-light me-3" href="./pages/login.php">Iniciar Sesión</a>
+                <a class="btn text-light btn-custom" style="background-color: #22C55E" href="./pages/register.php">Registrarse</a>
             </div>
         </div>
     </nav>

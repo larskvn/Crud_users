@@ -23,7 +23,7 @@
         }
 
         .bg-custom {
-            background-color: #184C99 !important;
+            background-color: #22C55E !important;
         }
         .btn-custom {
         background-color: #23A6F0 !important;

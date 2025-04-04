@@ -17,7 +17,7 @@ include "./includes/navbar.php";
 <style>
     body {
         padding-top: 56px;
-        background-color: #f8f9fa;
+        background-color: #22C55E;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 

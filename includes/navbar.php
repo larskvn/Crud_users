@@ -46,7 +46,7 @@
     <nav class="navbar navbar-expand-lg bg-custom navbar-dark shadow-sm fixed-top">
         <div class="container">
 
-W             <a class="navbar-brand fw-bold text-light" href="../index.php">
+            <a class="navbar-brand fw-bold text-light" href="../index.php">
                 <span style="color: #22C55E">Viaje</span>Seguro
             </a>
 

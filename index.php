@@ -1,5 +1,6 @@
 <?php
-include "./includes/navbar.php";
+include "./includes/topbar.php"
+
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +17,6 @@ include "./includes/navbar.php";
 </head>
 <style>
     body {
-        padding-top: 56px;
-        background-color: #22C55E;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 

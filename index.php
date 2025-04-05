@@ -1,8 +1,3 @@
-<?php
-include "./includes/topbar.php";
-include "./includes/navbar.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +13,7 @@ include "./includes/navbar.php";
 <style>
     body {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        
     }
 
     .card-form {
@@ -89,6 +85,11 @@ include "./includes/navbar.php";
 </style>
 
 <body>
+
+<?php include "./includes/topbar.php"; ?>
+    
+    <!-- Navbar (debajo del topbar) -->
+    <?php include "./includes/navbar.php"; ?>
 
     <main class="tg-main d-flex justify-content-center p-2 ">
         <div class="row d-flex align-items-center justify-content-between ">

@@ -1,6 +1,6 @@
 <?php
-include "./includes/topbar.php"
-
+include "./includes/topbar.php";
+include "./includes/navbar.php";
 ?>
 
 <!DOCTYPE html>

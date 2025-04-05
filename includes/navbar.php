@@ -43,7 +43,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-custom navbar-dark shadow-sm fixed-top">
+    <nav class="navbar navbar-expand-lg bg-custom navbar-dark shadow-sm pt-5">
         <div class="container">
 
             <a class="navbar-brand fw-bold text-light" href="../index.php">

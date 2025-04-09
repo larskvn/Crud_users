@@ -1,189 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <title>Crud php y mysql</title>
-</head>
-<style>
+  <meta charset="UTF-8">
+  <title>Shappp - Fantech Gaming</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
     body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        
+      background-color: #f4f4f4;
+      font-family: 'Segoe UI', sans-serif;
     }
 
-    .card-form {
-        border-radius: 15px;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    /* Navbar */
+    .navbar-custom {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 1rem 2rem;
     }
 
-    .table-container {
-        background: white;
-        border-radius: 15px;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-        padding: 20px;
+    .navbar-brand {
+      color: #f4511e;
+      font-weight: bold;
+      font-size: 1.5rem;
     }
 
-    .action-btn {
-        min-width: 80px;
-        margin: 2px;
+    .search-input {
+      width: 350px;
+      border-radius: 10px;
     }
 
-    @media (max-width: 992px) {
-        .main-container {
-            flex-direction: column;
-        }
-
-        .card-form {
-            width: 100% !important;
-            margin-bottom: 20px;
-        }
+    .dropdown-toggle {
+      border-radius: 10px;
     }
 
-
-    .bg-custom {
-        background-color: #184C99 !important;
+    /* Sidebar */
+    .sidebar {
+      background-color: #fff;
+      border-right: 1px solid #e0e0e0;
+      padding: 2rem 1rem;
+      height: 100vh;
+      position: sticky;
+      top: 0;
     }
 
-    .tg-main {
-        height: 50vh;
-        background: #184C99;
-        position: relative;
-        z-index: 1;
+    .sidebar h6 {
+      margin-top: 1rem;
+      font-weight: 600;
     }
 
-    .tg-text-title {
-        color: #23A6F0;
-        font-size: 1rem;
-        font-weight: 300;
+    .form-check {
+      margin-bottom: 0.5rem;
     }
 
-    .animated-border {
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s ease-in-out;
+    /* Product Cards */
+    .product-card {
+      background-color: #fff;
+      border: 1px solid #eee;
+      border-radius: 20px;
+      padding: 1rem;
+      transition: 0.3s ease;
     }
 
-    .animated-border::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        border: 2px solid white;
-        transition: left 0.3s ease-in-out;
+    .product-card:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
     }
 
-    .animated-border:hover::before {
-        left: 0;
+    .product-img {
+      height: 140px;
+      object-fit: contain;
+      margin-bottom: 10px;
     }
-</style>
 
+    .price {
+      color: #f4511e;
+      font-weight: bold;
+    }
+
+    .badge-city {
+      font-size: 0.75rem;
+      background-color: #eee;
+      color: #333;
+      border-radius: 8px;
+      padding: 0.2rem 0.5rem;
+    }
+  </style>
+</head>
 <body>
 
-<?php include "./includes/topbar.php"; ?>
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Shappp</a>
+
+    <form class="d-flex ms-4" role="search">
+      <input class="form-control search-input me-2" type="search" placeholder="Buscar productos..." aria-label="Search">
+      <button class="btn btn-danger" type="submit">Buscar</button>
+    </form>
+
+    <div class="dropdown ms-auto">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        Mi cuenta
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="./pages/dashboard.php">Iniciar sesión</a></li>
+        <li><a class="dropdown-item" href="#">Mi Carrito</a></li>
+        <li><a class="dropdown-item" href="#">Mensajes</a></li>
+        <li><a class="dropdown-item" href="#">Configuración</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
     
-    <!-- Navbar (debajo del topbar) -->
-    <?php include "./includes/navbar.php"; ?>
+    <!-- Sidebar -->
+    <aside class="col-md-3 sidebar">
+      <h5>Filtros</h5>
+      <h6>Ciudad</h6>
+      <div class="form-check"><input class="form-check-input" type="checkbox" id="jakarta"><label class="form-check-label" for="jakarta">DKI Jakarta</label></div>
+      <div class="form-check"><input class="form-check-input" type="checkbox" id="bogor"><label class="form-check-label" for="bogor">Bogor</label></div>
+      <div class="form-check"><input class="form-check-input" type="checkbox" id="bandung"><label class="form-check-label" for="bandung">Bandung</label></div>
 
-    <main class="tg-main d-flex justify-content-center p-2 ">
-        <div class="row d-flex align-items-center justify-content-between ">
-            <div class="col-md-6 ps-5">
-                <h4 class="tg-text-title pb-3">Online training</h4>
-                <h1 class="text-light">25K+ STUDENTS TRUST US</h1>
-                <p class="text-light">
-                    We know how large objects will act, but things on a small scale
-                </p>
-                <div class="d-flex gap-3 ">
-                    <a class="btn btn-custom bg-custom text-light animated-border animate__animated animate__bounce" href="#">Get Quote Now</a>
-                    <a class="btn btn-outline-light animated-border animate__animated animate__bounce" href="#">Learn More</a>
+      <h6>Condición</h6>
+      <div class="form-check"><input class="form-check-input" type="radio" name="condicion" id="nuevo"><label class="form-check-label" for="nuevo">Nuevo</label></div>
+      <div class="form-check"><input class="form-check-input" type="radio" name="condicion" id="usado"><label class="form-check-label" for="usado">Usado</label></div>
 
+      <h6>Color</h6>
+      <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="color-rojo"><label class="form-check-label" for="color-rojo">Rojo</label></div>
+      <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="color-blanco"><label class="form-check-label" for="color-blanco">Blanco</label></div>
 
-                </div>
-            </div>
-            <div class="col-md-6 text-center">
-                <img src="./assets/image/hero.svg" class="img-fluid" width="80%" alt="Profile Image">
-            </div>
-        </div>
+      <h6>Otros</h6>
+      <div class="form-check"><input class="form-check-input" type="checkbox" id="oficial"><label class="form-check-label" for="oficial">Tienda oficial</label></div>
+      <div class="form-check"><input class="form-check-input" type="checkbox" id="nuevo-rel"><label class="form-check-label" for="nuevo-rel">Nuevo lanzamiento</label></div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="col-md-9 p-4">
+      <h4>Productos Fantech Gaming</h4>
+      <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+
+        <?php
+        $productos = [
+          ["nombre" => "Fantech VX7 Mouse", "precio" => 727999, "img" => "https://via.placeholder.com/200x140", "ciudad" => "Jakarta"],
+          ["nombre" => "Mousepad ATOM MP905", "precio" => 53000, "img" => "https://via.placeholder.com/200x140", "ciudad" => "Bogor"],
+          ["nombre" => "Fantech MP902 RGB", "precio" => 539999, "img" => "https://via.placeholder.com/200x140", "ciudad" => "Depok"],
+          ["nombre" => "Teclado K613L Fighter", "precio" => 780000, "img" => "https://via.placeholder.com/200x140", "ciudad" => "Jakarta"],
+          ["nombre" => "Combo Gaming DAREDEVIL", "precio" => 1250000, "img" => "https://via.placeholder.com/200x140", "ciudad" => "Bogor"],
+          ["nombre" => "Auriculares HG23", "precio" => 399000, "img" => "https://via.placeholder.com/200x140", "ciudad" => "Jakarta"],
+        ];
+
+        foreach ($productos as $p) {
+          echo '
+            <div class="col">
+              <div class="product-card text-center">
+                <img src="'.$p["img"].'" class="product-img w-100" alt="'.$p["nombre"].'">
+                <h6 class="mt-2">'.$p["nombre"].'</h6>
+                <div class="price">Rp '.number_format($p["precio"], 0, ',', '.').'</div>
+                <span class="badge-city">'.$p["ciudad"].'</span>
+                <button class="btn btn-sm btn-danger w-100 mt-2">Agregar al carrito</button>
+              </div>
+            </div>';
+        }
+        ?>
+
+      </div>
     </main>
-
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#184C99" fill-opacity="1" d="M0,224L26.7,192C53.3,160,107,96,160,96C213.3,96,267,160,320,192C373.3,224,427,224,480,192C533.3,160,587,96,640,96C693.3,96,747,160,800,165.3C853.3,171,907,117,960,133.3C1013.3,149,1067,235,1120,261.3C1173.3,288,1227,256,1280,229.3C1333.3,203,1387,181,1413,170.7L1440,160L1440,0L1413.3,0C1386.7,0,1333,0,1280,0C1226.7,0,1173,0,1120,0C1066.7,0,1013,0,960,0C906.7,0,853,0,800,0C746.7,0,693,0,640,0C586.7,0,533,0,480,0C426.7,0,373,0,320,0C266.7,0,213,0,160,0C106.7,0,53,0,27,0L0,0Z"></path>
-    </svg>
-    <div class="container text-center">
-        <div class="row align-items-center">
-            <!-- Columna Izquierda -->
-            <div class="col-md-6 text-start">
-                <div class="mb-3">
-                    <div style="width: 50px; height: 4px; background-color: red;"></div>
-                </div>
-                <h2 class="fw-bold">Watch our Courses</h2>
-                <p class="text-muted">Problems trying to resolve the conflict between the two major realms of Classical physics:
-                    Newtonian mechanics</p>
-                <a href="#" class="btn btn-outline-primary">Learn More →</a>
-            </div>
-
-            <!-- Columna Derecha -->
-            <div class="col-md-6 d-flex flex-column">
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <div class="card shadow-sm p-4 text-start border-0" style="border-radius: 10px;">
-                            <div class="icon-box bg-success text-white rounded-circle p-3 mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-                                ✅
-                            </div>
-                            <h5 class="fw-bold">Certified Teacher</h5>
-                            <div style="width: 30px; height: 3px; background-color: red; margin-top: 5px;"></div>
-                            <p class="text-muted">The gradual accumulation of information about</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="card shadow-sm p-4 text-start border-0" style="border-radius: 10px;">
-                            <div class="icon-box bg-success text-white rounded-circle p-3 mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-                                📊
-                            </div>
-                            <h5 class="fw-bold">Market Analysis</h5>
-                            <div style="width: 30px; height: 3px; background-color: red; margin-top: 5px;"></div>
-                            <p class="text-muted">The gradual accumulation of information about</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 d-flex justify-content-center align-items-center">
-                    <div class="card shadow-sm p-4 text-start border-0" style="border-radius: 10px;">
-                        <div class="icon-box bg-danger text-white rounded-circle p-3 mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-                            📄
-                        </div>
-                        <h5 class="fw-bold">Lifetime access</h5>
-                        <div style="width: 30px; height: 3px; background-color: red; margin-top: 5px;"></div>
-                        <p class="text-muted">The gradual accumulation of information about</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container text-center p-5">
-    <div class="row align-items-center">
-        <div class="col-md-6 d-flex justify-content-center align-items-center p-5">
-            <img src="./assets/image/user_hero.svg" alt="User Hero Image">
-        </div>
-        <div class="col-md-6 text-start px-5">
-            <div style="width: 50px; height: 5px; background-color: red; margin-bottom: 3px;"></div>
-            <h2>Watch our Courses</h2>
-            <p>
-                Problems trying to resolve the conflict between the two major realms of Classical physics:
-                Newtonian mechanics.
-            </p>
-        </div>
-    </div>
+  </div>
 </div>
 
-    <?php include "./includes/footer.php"; ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

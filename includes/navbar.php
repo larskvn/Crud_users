@@ -42,7 +42,7 @@
             </ul>
         </div>
         <div class="d-flex">
-            <a class="btn text-light me-3" href="./pages/login.php">Iniciar Sesión</a>
+            <a class="btn text-light me-3" href="./pages/dashboard.php">Iniciar Sesión</a>
             <a class="btn text-light btn-custom" href="./pages/register.php">Registrarse</a>
         </div>
     </div>

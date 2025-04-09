@@ -1,13 +1,10 @@
 <?php
-session_start();
-
-// Verificar si el usuario está logueado
-if (!isset($_SESSION['user'])) {
-  // Si no está logueado, redirige al login
-  header("Location: login.php");
-  exit();
-}
+// Incluir archivo de autenticación
+include '../config/auth.php';
+// Obtener el nombre del usuario desde la sesión
+$username = $_SESSION['user'];
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,91 +14,10 @@ if (!isset($_SESSION['user'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/sidebar.css">
+  <link rel="stylesheet" href="../assets/css/navbar.css">
   <style>
-    :root {
-      --primary-color: #04B4FC;
-      --sidebar-bg: #f1f4ff;
-      --sidebar-width: 250px;
-      --sidebar-collapsed-width: 70px;
-      --header-height: 70px;
-      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      --transition-speed: 0.3s;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f8f9fc;
-      margin: 0;
-      min-height: 100vh;
-    }
-
-    .sidebar {
-      height: 100vh;
-      width: var(--sidebar-width);
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-color: var(--sidebar-bg);
-      border-right: 1px solid #e1e5eb;
-      padding-top: var(--header-height);
-      transition: all var(--transition-speed);
-      z-index: 1040;
-      overflow-y: auto;
-    }
-
-    .sidebar.collapsed {
-      width: var(--sidebar-collapsed-width);
-      overflow-x: hidden;
-    }
-
-    .sidebar.collapsed .nav-link span,
-    .sidebar.collapsed h6 {
-      display: none;
-    }
-
-    .sidebar.collapsed .nav-link {
-      justify-content: center;
-      padding: 10px 5px;
-    }
-
-    .sidebar.collapsed .logout-section {
-      padding: 0.5rem;
-    }
-
-    .sidebar h6 {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      margin-top: 1.5rem;
-      margin-left: 1rem;
-      color: #6c757d;
-      white-space: nowrap;
-      transition: all var(--transition-speed);
-    }
-
-    .sidebar .nav-link {
-      color: #2c3e50;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      font-size: 0.95rem;
-      white-space: nowrap;
-      transition: all var(--transition-speed);
-      margin: 0 10px;
-    }
-
-    .sidebar .nav-link.active,
-    .sidebar .nav-link:hover {
-      background-color: var(--primary-color);
-      color: white;
-      border-radius: 5px;
-    }
-
-    .sidebar .nav-link i {
-      margin-right: 10px;
-      font-size: 1.1rem;
-      min-width: 20px;
-    }
-
     .main-content {
       margin-left: var(--sidebar-width);
       padding: 20px;
@@ -114,31 +30,7 @@ if (!isset($_SESSION['user'])) {
       margin-left: var(--sidebar-collapsed-width);
     }
 
-    .navbar-custom {
-      background-color: #fff;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1050;
-      height: var(--header-height);
-    }
-
-    .navbar-brand {
-      font-weight: bold;
-      color: var(--primary-color);
-      font-size: 1.4rem;
-    }
-
-    .logo-blue {
-      color: var(--primary-color);
-    }
-
-    .logo-black {
-      color: #000;
-    }
-
+    
     .form-control:focus {
       box-shadow: none;
       border-color: var(--primary-color);
@@ -280,16 +172,7 @@ if (!isset($_SESSION['user'])) {
       </div>
     </form>
 
-    <?php
-    // Verificar si el usuario está logueado
-    if (!isset($_SESSION['user'])) {
-      header("Location: login.php");
-      exit();
-    }
 
-    // Obtener el nombre de usuario desde la sesión
-    $username = $_SESSION['user'];
-    ?>
     <!-- User profile dropdown -->
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

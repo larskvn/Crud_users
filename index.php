@@ -6,33 +6,8 @@
     <title>Shappp - Fantech Gaming</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/navbar.css">
     <style>
-        body {
-            background-color: #f4f4f4;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        /* Navbar */
-        .navbar-custom {
-            background-color: #ffffff;
-            border-bottom: 1px solid #e0e0e0;
-            padding: 1rem 2rem;
-        }
-
-        .navbar-brand {
-            color: #04B4FC;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-
-        .search-input {
-            width: 350px;
-            border-radius: 10px;
-        }
-
-        .dropdown-toggle {
-            border-radius: 10px;
-        }
 
         /* Sidebar */
         .sidebar {
@@ -41,7 +16,7 @@
             padding: 2rem 1rem;
             height: 100vh;
             position: sticky;
-            top: 0;
+            top: 2rem;
         }
 
         .sidebar h6 {
@@ -89,67 +64,79 @@
 
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-light navbar-custom px-3 d-flex justify-content-between align-items-center flex-wrap">
-        <div class="d-flex align-items-center">
-            <button class="btn btn-link text-info fs-2 me-2" id="toggleSidebar">
-                <i class="bi bi-list"></i>
-            </button>
-            <a class="navbar-brand d-flex align-items-center mb-0" href="#">
-                <span class="logo-black">F</span><span class="logo-blue">Cueva</span>
-            </a>
-        </div>
+   <!-- Navbar -->
+  <nav class="navbar navbar-light navbar-custom  d-flex justify-content-between align-items-center flex-wrap">
+    <div class="d-flex align-items-center">
+      <button class="btn btn-link text-info fs-2 me-2" id="toggleSidebar">
+        <i class="bi bi-list"></i>
+      </button>
+      <a class="navbar-brand d-flex align-items-center mb-0" href="./index.php">
+        <span class="logo-black">F</span><span class="logo-blue">Cueva</span>
+      </a>
+    </div>
 
-        <!-- Visible en pantallas grandes -->
-        <form class="d-none d-md-flex search-box" role="search">
-            <div class="input-group">
-                <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-            </div>
-        </form>
+    <!-- Visible en pantallas grandes -->
+    <form class="d-none d-md-flex search-box" role="search">
+      <div class="input-group">
+        <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </div>
+    </form>
 
-        <!-- User profile dropdown -->
-        <div class="dropdown">
-            <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://via.placeholder.com/40" alt="User" width="40" height="40" class="rounded-circle me-2">
-                <span class="d-none d-md-inline">Nombre de usuario</span> <!-- Aquí se muestra el username logueado -->
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Perfil</a></li>
-                <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Configuración</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item text-danger" href="./pages/login.php"><i class="bi bi-box-arrow-right me-2"></i> Iniciar sesión</a></li>
-            </ul>
-        </div>
-    </nav>
+
+    <!-- User profile dropdown -->
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://via.placeholder.com/40" alt="User" width="40" height="40" class="rounded-circle me-2">
+        <span class="d-none d-md-inline">username</span> <!-- Aquí se muestra el username logueado -->
+      </a>
+
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser1">
+        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Perfil</a></li>
+        <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Configuración</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item text-danger" href="./pages/login.php"><i class="bi bi-box-arrow-right me-2"></i> Iniciar sesión</a></li>
+      </ul>
+    </div>
+  </nav>
 
     <div class="container-fluid">
         <div class="row">
 
             <!-- Sidebar -->
             <aside class="col-md-3 sidebar">
-                <h5>Filtros</h5>
-                <h6>Ciudad</h6>
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="jakarta"><label class="form-check-label" for="jakarta">DKI Jakarta</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="bogor"><label class="form-check-label" for="bogor">Bogor</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="bandung"><label class="form-check-label" for="bandung">Bandung</label></div>
+    <h5>Filtros</h5>
 
-                <h6>Condición</h6>
-                <div class="form-check"><input class="form-check-input" type="radio" name="condicion" id="nuevo"><label class="form-check-label" for="nuevo">Nuevo</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="condicion" id="usado"><label class="form-check-label" for="usado">Usado</label></div>
+    <!-- Filtro por Categoría -->
+    <h6>Categoría</h6>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="herramientasManual">
+        <label class="form-check-label" for="herramientasManual">Herramientas Manuales</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="herramientasElectricas">
+        <label class="form-check-label" for="herramientasElectricas">Herramientas Eléctricas</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="materialesConstruccion">
+        <label class="form-check-label" for="materialesConstruccion">Materiales de Construcción</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="fontaneria">
+        <label class="form-check-label" for="fontaneria">Fontanería</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="pinturas">
+        <label class="form-check-label" for="pinturas">Pinturas y Solventes</label>
+    </div>
 
-                <h6>Color</h6>
-                <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="color-rojo"><label class="form-check-label" for="color-rojo">Rojo</label></div>
-                <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="color-blanco"><label class="form-check-label" for="color-blanco">Blanco</label></div>
 
-                <h6>Otros</h6>
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="oficial"><label class="form-check-label" for="oficial">Tienda oficial</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="nuevo-rel"><label class="form-check-label" for="nuevo-rel">Nuevo lanzamiento</label></div>
-            </aside>
+</aside>
 
-            <!-- Main Content -->
+
+            <!-- Main Content -->   
             <main class="col-md-9 p-4">
                 <h4>Productos Fantech Gaming</h4>
                 <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">

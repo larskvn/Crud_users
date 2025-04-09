@@ -3,7 +3,7 @@ session_start();
 
 // Redirige al dashboard si ya está logueado
 if (isset($_SESSION['user'])) {
-    header("Location: dashboard.php");
+    header("Location: ../pages/dashboard.php");
     exit();
 }
 
@@ -175,9 +175,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <form method="POST">
                         <?php
                         if (isset($error)) {
-                            echo "<div style='color: red;'>$error</div>"; // Muestra el error si las credenciales son incorrectas
+                            echo "<div class='alert alert-danger text-center'>$error</div>";
                         }
                         ?>
+
                         <?php
                         include("../model/conexion.php");
                         ?>

@@ -1,5 +1,16 @@
+<?php
+session_start();
+
+// Verificar si el usuario está logueado
+if (!isset($_SESSION['user'])) {
+  // Si no está logueado, redirige al login
+  header("Location: login.php");
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Dashboard FCueva</title>
@@ -105,7 +116,7 @@
 
     .navbar-custom {
       background-color: #fff;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
       position: fixed;
       top: 0;
       left: 0;
@@ -229,6 +240,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Sidebar -->
@@ -239,23 +251,23 @@
     <a href="#" class="nav-link"><i class="bi bi-cart3"></i> <span>Sales Orders</span></a>
     <a href="#" class="nav-link"><i class="bi bi-truck"></i> <span>Proveedores</span></a>
     <a href="#" class="nav-link"><i class="bi bi-graph-up-arrow"></i> <span>Movimientos</span></a>
-    
+
     <h6>Support</h6>
     <a href="#" class="nav-link"><i class="bi bi-info-circle"></i> <span>Ayuda</span></a>
     <a href="#" class="nav-link"><i class="bi bi-gear"></i> <span>Configuración</span></a>
 
     <div class="logout-section">
-      <a href="#" class="nav-link text-danger"><i class="bi bi-box-arrow-right"></i> <span>Logout</span></a>
+      <a href="./logout.php" class="nav-link text-danger"><i class="bi bi-box-arrow-right"></i> <span>Logout</span></a>
     </div>
   </div>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-light navbar-custom px-3 d-flex justify-content-between align-items-center flex-wrap">
+  <nav class="navbar navbar-light navbar-custom  d-flex justify-content-between align-items-center flex-wrap">
     <div class="d-flex align-items-center">
       <button class="btn btn-link text-info fs-2 me-2" id="toggleSidebar">
         <i class="bi bi-list"></i>
       </button>
-      <a class="navbar-brand d-flex align-items-center mb-0" href="#">
+      <a class="navbar-brand d-flex align-items-center mb-0" href="../index.php">
         <span class="logo-black">F</span><span class="logo-blue">Cueva</span>
       </a>
     </div>
@@ -268,17 +280,30 @@
       </div>
     </form>
 
+    <?php
+    // Verificar si el usuario está logueado
+    if (!isset($_SESSION['user'])) {
+      header("Location: login.php");
+      exit();
+    }
+
+    // Obtener el nombre de usuario desde la sesión
+    $username = $_SESSION['user'];
+    ?>
     <!-- User profile dropdown -->
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="https://via.placeholder.com/40" alt="User" width="40" height="40" class="rounded-circle me-2">
-        <span class="d-none d-md-inline">Usuario</span>
+        <span class="d-none d-md-inline"><?php echo $username; ?></span> <!-- Aquí se muestra el username logueado -->
       </a>
+
       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser1">
         <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Perfil</a></li>
         <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Configuración</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item text-danger" href="./logout.php"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
       </ul>
     </div>
   </nav>
@@ -429,7 +454,7 @@
               <div class="progress mb-2" style="height: 8px;">
                 <div class="progress-bar bg-primary" role="progressbar" style="width: 42%"></div>
               </div>
-              
+
               <div class="d-flex justify-content-between mb-1">
                 <span>Ropa</span>
                 <span>28%</span>
@@ -437,7 +462,7 @@
               <div class="progress mb-2" style="height: 8px;">
                 <div class="progress-bar bg-info" role="progressbar" style="width: 28%"></div>
               </div>
-              
+
               <div class="d-flex justify-content-between mb-1">
                 <span>Hogar</span>
                 <span>18%</span>
@@ -445,7 +470,7 @@
               <div class="progress mb-2" style="height: 8px;">
                 <div class="progress-bar bg-warning" role="progressbar" style="width: 18%"></div>
               </div>
-              
+
               <div class="d-flex justify-content-between mb-1">
                 <span>Otros</span>
                 <span>12%</span>
@@ -602,11 +627,12 @@
 
     // Initial check
     handleResize();
-    
+
     // Listen for resize events
     window.addEventListener('resize', handleResize);
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

@@ -1,3 +1,30 @@
+<?php
+session_start();
+
+// Redirige al dashboard si ya está logueado
+if (isset($_SESSION['user'])) {
+    header("Location: dashboard.php");
+    exit();
+}
+
+// Validación del login
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $correo = $_POST['username'] ?? '';
+    $contrasena = $_POST['contrasena'] ?? '';
+
+    // Credenciales estáticas
+    $user_valido = 'admin';
+    $pass_valido = 'a123';
+
+    if ($correo === $user_valido && $contrasena === $pass_valido) {
+        $_SESSION['user'] = $correo; // Guarda el correo en la sesión
+        header("Location: dashboard.php"); // Redirige al dashboard
+        exit();
+    } else {
+        $error = "Credenciales incorrectas."; // Muestra el mensaje de error
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -147,15 +174,20 @@
                     <hr>
                     <form method="POST">
                         <?php
+                        if (isset($error)) {
+                            echo "<div style='color: red;'>$error</div>"; // Muestra el error si las credenciales son incorrectas
+                        }
+                        ?>
+                        <?php
                         include("../model/conexion.php");
                         ?>
                         <div class="mb-3">
-                            <label class="col-form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" name="correo" placeholder="Ingrese su correo electrónico">
+                            <label class="col-form-label">Usuario</label>
+                            <input type="text" class="form-control" name="username" placeholder="Ingrese su usuario" required>
                         </div>
                         <div class="mb-3">
                             <label for="inputPassword5" class="form-label">Password</label>
-                            <input type="password" id="inputPassword5" name="contrasena" class="form-control" aria-describedby="passwordHelpBlock">
+                            <input type="password" id="inputPassword5" name="contrasena" class="form-control" aria-describedby="passwordHelpBlock" required>
                             <div id="passwordHelpBlock" class="form-text">
                                 Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                             </div>
@@ -164,18 +196,17 @@
 
                             <button type="submit" class="btn btn-primary" name="btnregister">Iniciar sesión</button>
                         </div>
-
                     </form>
                     <hr>
                     <p class="text-center ">¿No tienes una cuenta?<a href="../pages/register.php" style="cursor: pointer; text-decoration: none; transition: 0.3s; font-weight: bold;"
-          onmouseover="this.style.textDecoration='underline'; this.style.color='#0056b3';"
-          onmouseout="this.style.textDecoration='none'; this.style.color='';"> Registrarse</a></p>
+                            onmouseover="this.style.textDecoration='underline'; this.style.color='#0056b3';"
+                            onmouseout="this.style.textDecoration='none'; this.style.color='';"> Registrarse</a></p>
                     <!-- Enlace para abrir el modal -->
                     <p class="text-center">
                         ¿Olvidaste tu contraseña?
                         <span class="text-primary" data-bs-toggle="modal" data-bs-target="#recuperarModal" style="cursor: pointer; text-decoration: none; transition: 0.3s; font-weight: bold;"
-          onmouseover="this.style.textDecoration='underline'; this.style.color='#0056b3';"
-          onmouseout="this.style.textDecoration='none'; this.style.color='';">Recuperar contraseña</span>
+                            onmouseover="this.style.textDecoration='underline'; this.style.color='#0056b3';"
+                            onmouseout="this.style.textDecoration='none'; this.style.color='';">Recuperar contraseña</span>
                     </p>
 
                     <!-- Modal de Bootstrap -->

@@ -64,58 +64,62 @@
 <body>
 
   <!-- Navbar -->
-<nav class="navbar navbar-light navbar-custom d-flex justify-content-between align-items-center flex-wrap px-3 py-2">
-  <div class="d-flex align-items-center">
-    <button class="btn btn-link fs-2 me-2" id="toggleSidebar" style="color: #04B4FC;">
-      <i class="bi bi-list"></i>
-    </button>
-    <a class="navbar-brand d-flex align-items-center mb-0" href="../index.php">
+  <nav class="navbar navbar-light navbar-custom d-flex justify-content-between align-items-center flex-wrap px-3 py-2">
+    <div class="d-flex align-items-center">
+      <button class="btn btn-link fs-2 me-2" id="toggleSidebar" style="color: #04B4FC;">
+        <i class="bi bi-list"></i>
+      </button>
+      <a class="navbar-brand d-flex align-items-center mb-0" href="../index.php">
         <span class="logo-black">F</span><span class="logo-blue">Cueva</span>
       </a>
-  </div>
-
-  <!-- Buscador visible en pantallas grandes -->
-  <form class="d-none d-md-flex search-box w-50 mx-3" role="search">
-    <div class="input-group">
-      <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
-      <input class="form-control border-start-0" type="search" placeholder="Search" aria-label="Search">
     </div>
-    <button class="btn btn-outline-secondary ms-2" type="button">
-      <i class="bi bi-funnel"></i>
-    </button>
-  </form>
 
-  <!-- Iconos de usuario -->
-  <div class="d-flex align-items-center gap-3 fs-4" style="color: #04B4FC;">
+    <!-- Buscador visible en pantallas grandes -->
+    <form class="d-none d-md-flex search-box w-50 mx-3" role="search">
+      <div class="input-group">
+        <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+        <input class="form-control border-start-0" type="search" placeholder="Search" aria-label="Search">
+      </div>
+      <button class="btn btn-outline-secondary ms-2" type="button">
+        <i class="bi bi-funnel"></i>
+      </button>
+    </form>
 
-    <!-- Carrito -->
-    <a href="#" class="position-relative text-decoration-none" style="color: #04B4FC;">
-      <i class="bi bi-cart"></i>
-      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info text-dark">
-        2
-      </span>
-    </a>
+    <!-- Iconos de usuario -->
+    <div class="d-flex align-items-center gap-3 fs-4" style="color: #04B4FC;">
 
-    <!-- Tienda -->
-    <a href="#" class="text-decoration-none" style="color: #04B4FC;">
-      <i class="bi bi-shop"></i>
-    </a>
+      <!-- Carrito -->
 
-    <!-- Perfil -->
-    <div class="dropdown">
-      <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false" style="color: #04B4FC;">
-        <i class="bi bi-person-lines-fill fs-4"></i>
+      <a href="./pages/cart.php" target="_blank" class="position-relative text-decoration-none" style="color: #04B4FC;">
+        <i class="bi bi-cart"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info text-dark">
+          2
+        </span>
       </a>
 
-      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Perfil</a></li>
-        <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Configuración</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item text-danger" href="./pages/login.php"><i class="bi bi-box-arrow-right me-2"></i> Iniciar sesión</a></li>
-      </ul>
+
+      <!-- Tienda -->
+      <a href="#" class="text-decoration-none" style="color: #04B4FC;">
+        <i class="bi bi-shop"></i>
+      </a>
+
+      <!-- Perfil -->
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false" style="color: #04B4FC;">
+          <i class="bi bi-person-lines-fill fs-4"></i>
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser1">
+          <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Perfil</a></li>
+          <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Configuración</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item text-danger" href="./pages/login.php"><i class="bi bi-box-arrow-right me-2"></i> Iniciar sesión</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
 
   <div class="container-fluid">
